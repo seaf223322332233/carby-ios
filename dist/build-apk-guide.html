@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل استخراج APK - تطبيق وجباتي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #6c5ce7 0%, #8e44ad 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #6c5ce7;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .method-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-right: 4px solid #6c5ce7;
+        }
+        .method-card.recommended {
+            border-right-color: #22c55e;
+            background: linear-gradient(135deg, #f0fdf4 0%, #f8f9fa 100%);
+        }
+        .method-card h2 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .badge {
+            background: #22c55e;
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .step {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid #e9ecef;
+        }
+        .step-number {
+            background: #6c5ce7;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-left: 10px;
+        }
+        .step h3 {
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .step-content {
+            color: #555;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+        .step-content ol, .step-content ul {
+            margin-right: 20px;
+        }
+        .step-content li {
+            margin-bottom: 8px;
+        }
+        .code {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-right: 3px solid #ffc107;
+            color: #856404;
+        }
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-right: 3px solid #28a745;
+            color: #155724;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #6c5ce7, #8e44ad);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 900;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+            text-align: center;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn-large {
+            font-size: 1.1rem;
+            padding: 18px 40px;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 15px;
+            background: #fff;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+        .icon-item i {
+            font-size: 2.5rem;
+            color: #6c5ce7;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fab fa-android"></i> دليل استخراج نسخة Android (APK)</h1>
+
+        <!-- الطريقة الموصى بها -->
+        <div class="method-card recommended">
+            <h2>
+                <span class="badge">⭐ موصى به</span>
+                الطريقة 1: PWABuilder (Microsoft)
+            </h2>
+            <p style="color: #555; margin-bottom: 20px;">
+                <strong>الأسهل والأسرع!</strong> لا يحتاج خبرة برمجة. فقط اتبع الخطوات أدناه.
+            </p>
+
+            <div class="step">
+                <h3><span class="step-number">1</span> التحضير</h3>
+                <div class="step-content">
+                    <p>تأكد من:</p>
+                    <ul>
+                        <li>✅ الموقع يعمل على HTTPS</li>
+                        <li>✅ manifest.json موجود</li>
+                        <li>✅ sw.js يعمل</li>
+                        <li>✅ الأيقونات موجودة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3><span class="step-number">2</span> فتح PWABuilder</h3>
+                <div class="step-content">
+                    <p>اذهب إلى موقع PWABuilder:</p>
+                    <div class="code">https://www.pwabuilder.com/</div>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="https://www.pwabuilder.com/" target="_blank" class="btn btn-large">
+                            <i class="fas fa-external-link-alt"></i> فتح PWABuilder
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3><span class="step-number">3</span> فحص التطبيق</h3>
+                <div class="step-content">
+                    <ol>
+                        <li>أدخل رابط موقعك: <code>https://yoursite.com/client_dashboard.php</code></li>
+                        <li>اضغط "Start"</li>
+                        <li>انتظر حتى ينتهي الفحص (30 ثانية - دقيقة)</li>
+                        <li>ستحصل على نتيجة تقييم PWA</li>
+                    </ol>
+                    <div class="warning">
+                        <i class="fas fa-exclamation-triangle"></i> <strong>مهم:</strong> يجب أن يكون الموقع متاحاً على الإنترنت (لا يمكن استخدام localhost)
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3><span class="step-number">4</span> بناء APK</h3>
+                <div class="step-content">
+                    <ol>
+                        <li>بعد الفحص، اضغط <strong>"Build My PWA"</strong></li>
+                        <li>اختر <strong>"Android"</strong></li>
+                        <li>اختر <strong>"Cloud Build"</strong> (الأسهل)</li>
+                        <li>سجّل دخول بحساب Microsoft (مجاني)</li>
+                        <li>املأ معلومات التطبيق:
+                            <ul>
+                                <li>Package Name: <code>com.carby.wajabati</code></li>
+                                <li>App Name: <strong>تطبيق وجباتي</strong></li>
+                                <li>Version: <code>1.0.0</code></li>
+                            </ul>
+                        </li>
+                        <li>اضغط <strong>"Build"</strong></li>
+                        <li>انتظر 5-15 دقيقة</li>
+                        <li>حمّل APK عندما ينتهي</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3><span class="step-number">5</span> تثبيت APK</h3>
+                <div class="step-content">
+                    <ol>
+                        <li>انقل ملف APK إلى هاتف Android</li>
+                        <li>افتح الملف على الهاتف</li>
+                        <li>قد تحتاج تفعيل "تثبيت من مصادر غير معروفة":
+                            <ul>
+                                <li>Settings > Security > Unknown Sources</li>
+                                <li>فعّل الخيار</li>
+                                <li>ثبّت APK</li>
+                                <li>عطّل الخيار مرة أخرى</li>
+                            </ul>
+                        </li>
+                        <li>تم! التطبيق مثبت على هاتفك</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="success">
+                <i class="fas fa-check-circle"></i> <strong>مميزات هذه الطريقة:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>✅ مجاني 100%</li>
+                    <li>✅ سريع (دقائق)</li>
+                    <li>✅ لا يحتاج Android Studio</li>
+                    <li>✅ لا يحتاج معرفة برمجة</li>
+                    <li>✅ يدعم جميع ميزات PWA</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- طريقة بديلة -->
+        <div class="method-card">
+            <h2>الطريقة 2: Capacitor (للمحترفين)</h2>
+            <p style="color: #555; margin-bottom: 20px;">
+                للمطورين الذين يريدون تحكم أكبر. يحتاج Node.js و Android Studio.
+            </p>
+            <div class="warning">
+                <i class="fas fa-info-circle"></i> هذه الطريقة معقدة وتحتاج خبرة تقنية. استخدم الطريقة الأولى إن أمكن.
+            </div>
+            <div class="step-content">
+                <p>للتفاصيل الكاملة، راجع ملف: <code>استخراج_نسخة_Android.md</code></p>
+            </div>
+        </div>
+
+        <!-- معلومات إضافية -->
+        <div class="method-card">
+            <h2><i class="fas fa-info-circle"></i> معلومات مهمة</h2>
+            
+            <div class="step">
+                <h3>📋 قبل البناء:</h3>
+                <div class="step-content">
+                    <ul>
+                        <li>✅ تأكد من HTTPS</li>
+                        <li>✅ اختبر PWA في المتصفح أولاً</li>
+                        <li>✅ تأكد من عمل الإشعارات</li>
+                        <li>✅ تأكد من وجود الأيقونات</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>📱 بعد البناء:</h3>
+                <div class="step-content">
+                    <ul>
+                        <li>✅ اختبر APK على أجهزة مختلفة</li>
+                        <li>✅ اختبر الإشعارات</li>
+                        <li>✅ اختبر العمل بدون إنترنت</li>
+                        <li>✅ تأكد من الأمان</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>🏪 نشر على Google Play:</h3>
+                <div class="step-content">
+                    <ol>
+                        <li>أنشئ حساب مطور: <a href="https://play.google.com/console" target="_blank">Google Play Console</a></li>
+                        <li>رسوم: $25 (مرة واحدة)</li>
+                        <li>أنشئ تطبيق جديد</li>
+                        <li>ارفع APK</li>
+                        <li>املأ المعلومات والصور</li>
+                        <li>أرسل للمراجعة (1-3 أيام)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="icon-grid">
+            <div class="icon-item">
+                <i class="fab fa-google-play"></i>
+                <div>Google Play</div>
+            </div>
+            <div class="icon-item">
+                <i class="fab fa-android"></i>
+                <div>Android</div>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-mobile-alt"></i>
+                <div>APK</div>
+            </div>
+            <div class="icon-item">
+                <i class="fas fa-cloud"></i>
+                <div>Cloud Build</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://www.pwabuilder.com/" target="_blank" class="btn btn-large">
+                <i class="fas fa-rocket"></i> ابدأ الآن - PWABuilder
+            </a>
+            <a href="PWA_SETUP_COMPLETE.md" class="btn">
+                <i class="fas fa-book"></i> دليل الإعداد
+            </a>
+            <a href="client_dashboard.php" class="btn">
+                <i class="fas fa-home"></i> العودة للتطبيق
+            </a>
+        </div>
+
+        <div class="footer">
+            <p><strong>تطبيق وجباتي - كاربي</strong></p>
+            <p>© 2025 - جميع الحقوق محفوظة</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <i class="fas fa-lightbulb"></i> نصيحة: استخدم PWABuilder للحصول على APK في دقائق!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

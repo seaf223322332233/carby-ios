@@ -1,0 +1,1120 @@
+/**
+ * ===================================================================
+ * Admin & Client Unified Style v2.0
+ * تصميم موحد شامل لصفحات الأدمن والعميل - بهوية المطعم
+ * ===================================================================
+ * 
+ * هذا الملف يحتوي على جميع الأنماط الموحدة:
+ * - قائمة جانبية عصرية بهوية المطعم
+ * - تصميم موحد لجميع الصفحات
+ * - ألوان موحدة (لون واحد للقائمة الجانبية)
+ * - تأثيرات hover و active
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+/* ============================================
+   متغيرات CSS - هوية المطعم (قيم افتراضية)
+   ============================================ */
+:root {
+    /* القيم الافتراضية (يتم استبدالها من admin_colors.php) */
+    --restaurant-primary: #d97706;
+    --restaurant-primary-dark: #b45309;
+    --restaurant-primary-light: #f59e0b;
+    --restaurant-accent: #dc2626;
+    --restaurant-success: #16a34a;
+    --restaurant-warning: #eab308;
+    --restaurant-gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+    --restaurant-gradient-dark: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+    
+    /* الخلفيات */
+    --admin-bg: #fafaf9;                  /* خلفية فاتحة دافئة */
+    --admin-surface: #ffffff;
+    --admin-card: #ffffff;
+    
+    /* النصوص */
+    --admin-text-main: #1c1917;
+    --admin-text-secondary: #78716c;
+    --admin-text-muted: #a8a29e;
+    
+    /* الحدود والظلال */
+    --admin-border: rgba(28, 25, 23, 0.08);
+    --admin-border-dark: rgba(28, 25, 23, 0.12);
+    --admin-shadow: 0 10px 30px rgba(28, 25, 23, 0.08);
+    --admin-shadow-hover: 0 15px 40px rgba(28, 25, 23, 0.12);
+    --admin-shadow-sm: 0 4px 12px rgba(28, 25, 23, 0.04);
+    
+    /* Border Radius */
+    --admin-radius-sm: 12px;
+    --admin-radius-md: 16px;
+    --admin-radius-lg: 20px;
+    --admin-radius-xl: 24px;
+    
+    /* المسافات */
+    --admin-spacing-xs: 8px;
+    --admin-spacing-sm: 12px;
+    --admin-spacing-md: 16px;
+    --admin-spacing-lg: 24px;
+    --admin-spacing-xl: 32px;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: var(--admin-bg);
+    color: var(--admin-text-main);
+    direction: rtl;
+    line-height: 1.6;
+}
+
+/* ============================================
+   القائمة الجانبية - هوية المطعم
+   ============================================ */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--restaurant-gradient-dark);
+    box-shadow: -4px 0 30px rgba(217, 119, 6, 0.25);
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Header القائمة الجانبية */
+.sidebar-header {
+    padding: 32px 24px;
+    background: rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 1000;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-header h3 i {
+    color: #ffd89b;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 8px rgba(255, 216, 155, 0.6));
+}
+
+/* Navigation Links */
+.sidebar-nav {
+    padding: 16px 0;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-right: 4px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    margin: 4px 12px;
+    border-radius: 12px;
+}
+
+.sidebar-nav a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #ffffff;
+    transform: scaleY(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding-right: 32px;
+    transform: translateX(-4px);
+}
+
+.sidebar-nav a:hover::before {
+    transform: scaleY(1);
+}
+
+/* حالة النشط - الصفحة الحالية */
+.sidebar-nav a.active {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-right-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    font-weight: 900;
+}
+
+.sidebar-nav a.active::before {
+    transform: scaleY(1);
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.sidebar-nav a.active i {
+    color: #ffffff;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+.sidebar-nav a i {
+    width: 24px;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sidebar-nav a:hover i,
+.sidebar-nav a.active i {
+    color: #ffffff;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+/* Separator */
+.sidebar-nav hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 16px 24px;
+}
+
+.sidebar-nav li {
+    list-style: none;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+.main-content {
+    margin-right: 280px;
+    min-height: 100vh;
+    transition: margin-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--admin-bg);
+}
+
+.top-bar {
+    background: var(--admin-surface);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.user-info,
+.user-welcome {
+    font-weight: 800;
+    color: var(--admin-text-main);
+    font-size: 1.1rem;
+}
+
+.logout-link {
+    color: var(--restaurant-accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: var(--admin-radius-sm);
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    background: var(--restaurant-accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.content-wrapper {
+    padding: 32px 40px;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ============================================
+   Cards & Containers
+   ============================================ */
+.wrap {
+    padding: 22px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-lg);
+    box-shadow: var(--admin-shadow);
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--restaurant-gradient);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--admin-shadow-hover);
+}
+
+.card h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    font-weight: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+    color: var(--admin-text-main);
+}
+
+.card h3 i {
+    color: var(--restaurant-primary);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    padding: 12px 20px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.btnPrimary {
+    background: var(--restaurant-gradient);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(217, 119, 6, 0.25);
+}
+
+.btnPrimary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(217, 119, 6, 0.35);
+}
+
+.btnGhost {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid var(--admin-border);
+    color: var(--admin-text-main);
+}
+
+.btnGhost:hover {
+    background: var(--admin-bg);
+    border-color: var(--restaurant-primary-light);
+}
+
+.btnAdjust {
+    border: none;
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #fff;
+    font-size: 0.85rem;
+    min-width: 50px;
+    justify-content: center;
+}
+
+.btnAdjust:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btnAdjust:active {
+    transform: scale(0.95);
+}
+
+/* ============================================
+   Forms & Inputs
+   ============================================ */
+label {
+    display: block;
+    margin: 10px 0 8px;
+    font-weight: 900;
+    color: var(--admin-text-secondary);
+}
+
+.control,
+.inp {
+    width: 100%;
+    border-radius: var(--admin-radius-sm);
+    border: 2px solid var(--admin-border);
+    padding: 12px 16px;
+    font-family: inherit;
+    font-weight: 700;
+    background: var(--admin-surface);
+    color: var(--admin-text-main);
+    transition: all 0.2s;
+}
+
+.control:focus,
+.inp:focus {
+    outline: none;
+    border-color: var(--restaurant-primary);
+    box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.1);
+}
+
+/* ============================================
+   Grid Layouts
+   ============================================ */
+.grid {
+    display: grid;
+    gap: 14px;
+}
+
+.g2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+.g3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 980px) {
+    .g2,
+    .g3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   KPI & Stats
+   ============================================ */
+.kpiGrid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 980px) {
+    .kpiGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.kpi {
+    border-radius: 18px;
+    border: 1px solid var(--admin-border);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 12px;
+}
+
+.kpi small {
+    display: block;
+    color: var(--admin-text-muted);
+    font-weight: 1000;
+}
+
+.kpi b {
+    display: block;
+    margin-top: 4px;
+    font-size: 1.1rem;
+    font-weight: 1000;
+}
+
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 14px 0 16px;
+}
+
+.statCard {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 22px;
+    box-shadow: var(--admin-shadow);
+    padding: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.statCard::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(650px 220px at 100% -10%, rgba(217, 119, 6, 0.18), transparent 55%);
+    pointer-events: none;
+}
+
+.statIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 18px;
+    background: rgba(217, 119, 6, 0.12);
+    border: 1px solid rgba(217, 119, 6, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--restaurant-primary);
+    flex: 0 0 auto;
+}
+
+.statInfo b {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 1000;
+}
+
+.statInfo small {
+    display: block;
+    margin-top: 3px;
+    color: var(--admin-text-muted);
+    font-weight: 900;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+.tableWrap {
+    overflow: auto;
+    border-radius: 16px;
+    background: var(--admin-surface);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 980px;
+}
+
+thead {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.08), rgba(245, 158, 11, 0.05));
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+th,
+td {
+    padding: 14px 16px;
+    text-align: right;
+    vertical-align: middle;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+th {
+    color: var(--restaurant-primary);
+    font-size: 0.9rem;
+    border-bottom: 2px solid var(--restaurant-primary);
+    font-weight: 1000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    transition: all 0.2s;
+    border-bottom: 1px solid rgba(28, 25, 23, 0.04);
+}
+
+tbody tr:hover {
+    background: rgba(217, 119, 6, 0.04);
+    transform: scale(1.01);
+}
+
+td {
+    color: var(--admin-text-main);
+    border-bottom: 1px solid rgba(28, 25, 23, 0.04);
+}
+
+td small {
+    color: var(--admin-text-muted);
+    font-weight: 900;
+}
+
+.tdInput input {
+    width: 120px;
+    max-width: 100%;
+    border-radius: 12px;
+    border: 2px solid var(--admin-border);
+    padding: 10px;
+    font-weight: 1000;
+    font-family: inherit;
+}
+
+/* ============================================
+   Badges & Pills
+   ============================================ */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--admin-border);
+    background: rgba(28, 25, 23, 0.04);
+    font-size: 0.82rem;
+    font-weight: 1000;
+}
+
+.pill.ok {
+    border-color: rgba(22, 163, 74, 0.25);
+    background: rgba(22, 163, 74, 0.10);
+    color: var(--restaurant-success);
+}
+
+.pill.warn {
+    border-color: rgba(234, 179, 8, 0.25);
+    background: rgba(234, 179, 8, 0.10);
+    color: var(--restaurant-warning);
+}
+
+.pill.bad {
+    border-color: rgba(220, 38, 38, 0.25);
+    background: rgba(220, 38, 38, 0.10);
+    color: var(--restaurant-accent);
+}
+
+.pill.muted {
+    color: var(--admin-text-muted);
+}
+
+/* ============================================
+   Alerts & Messages
+   ============================================ */
+.flashOk,
+.note {
+    margin-top: 10px;
+    border-radius: 16px;
+    border: 1px dashed rgba(217, 119, 6, 0.35);
+    background: rgba(217, 119, 6, 0.06);
+    padding: 12px;
+    font-weight: 900;
+    color: var(--admin-text-main);
+    position: relative;
+    z-index: 1;
+    line-height: 1.8;
+}
+
+.flashOk {
+    border: 1px solid rgba(22, 163, 74, 0.25);
+    background: rgba(22, 163, 74, 0.08);
+    padding: 12px 14px;
+    border-radius: 16px;
+    font-weight: 1000;
+    margin-bottom: 14px;
+}
+
+.flashErr {
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    background: rgba(220, 38, 38, 0.08);
+    padding: 12px 14px;
+    border-radius: 16px;
+    font-weight: 1000;
+    margin-bottom: 14px;
+}
+
+/* ============================================
+   Language Switcher
+   ============================================ */
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--admin-radius-sm);
+    background: rgba(217, 119, 6, 0.1);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+    color: var(--restaurant-primary);
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 0.9rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.lang-switcher::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(245, 158, 11, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.lang-switcher:hover::before {
+    opacity: 1;
+}
+
+.lang-switcher:hover {
+    background: rgba(217, 119, 6, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    border-color: var(--restaurant-primary);
+}
+
+.lang-switcher i {
+    font-size: 1rem;
+}
+
+.top-bar .lang-switcher {
+    margin-left: 12px;
+}
+
+/* ============================================
+   Page Headers
+   ============================================ */
+.topHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.title b {
+    font-size: 1.15rem;
+    color: var(--admin-text-main);
+}
+
+.title small {
+    color: var(--admin-text-muted);
+    font-weight: 800;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pageHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.titleBox h1 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 1000;
+    color: var(--admin-text-main);
+}
+
+.titleBox p {
+    margin: 6px 0 0;
+    color: var(--admin-text-muted);
+    font-weight: 900;
+}
+
+/* ============================================
+   Search Forms
+   ============================================ */
+.searchForm {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ============================================
+   Row Mini
+   ============================================ */
+.rowMini {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    color: var(--admin-text-muted);
+    font-weight: 900;
+}
+
+/* ============================================
+   Dashboard Specific Styles
+   ============================================ */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+    padding: 28px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(217, 119, 6, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(217, 119, 6, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.stat-box:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(217, 119, 6, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(217, 119, 6, 0.05) 100%);
+    color: var(--restaurant-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
+    transition: all 0.3s;
+}
+
+.stat-box:hover .stat-icon {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(217, 119, 6, 0.25);
+}
+
+.stat-info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.stat-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    color: var(--admin-text-secondary);
+    font-weight: 700;
+}
+
+.stat-info .number {
+    font-size: 2.2rem;
+    font-weight: 1000;
+    background: var(--restaurant-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+/* ألوان خاصة للبطاقات */
+.box-sales {
+    border-color: rgba(22, 163, 74, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+.box-sales .stat-icon {
+    color: var(--restaurant-success);
+    background: linear-gradient(135deg, rgba(22, 163, 74, 0.2) 0%, rgba(22, 163, 74, 0.05) 100%);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+}
+
+.box-sales::before {
+    background: radial-gradient(circle, rgba(22, 163, 74, 0.15) 0%, transparent 70%);
+}
+
+.box-orders {
+    border-color: rgba(234, 179, 8, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+}
+
+.box-orders .stat-icon {
+    color: var(--restaurant-warning);
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.2) 0%, rgba(234, 179, 8, 0.05) 100%);
+    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
+}
+
+.box-orders::before {
+    background: radial-gradient(circle, rgba(234, 179, 8, 0.15) 0%, transparent 70%);
+}
+
+.box-clients {
+    border-color: rgba(217, 119, 6, 0.2);
+    background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+}
+
+.box-clients .stat-icon {
+    color: var(--restaurant-primary);
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, rgba(217, 119, 6, 0.05) 100%);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+}
+
+.box-clients::before {
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
+}
+
+/* ============================================
+   Recent Orders Table
+   ============================================ */
+.recent-orders-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.recent-orders-table thead {
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(245, 158, 11, 0.05) 100%);
+}
+
+.recent-orders-table th {
+    background: transparent;
+    color: var(--admin-text-secondary);
+    padding: 18px;
+    font-weight: 1000;
+    font-size: 0.9rem;
+    border-bottom: 2px solid var(--admin-border);
+}
+
+.recent-orders-table td {
+    padding: 18px;
+    border-bottom: 1px solid var(--admin-border);
+    transition: background 0.2s;
+}
+
+.recent-orders-table tbody tr:hover {
+    background: rgba(217, 119, 6, 0.04);
+}
+
+/* ============================================
+   Headers Enhancement
+   ============================================ */
+h2 {
+    font-size: 1.8rem;
+    font-weight: 1000;
+    background: var(--restaurant-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+h2 i {
+    color: var(--restaurant-primary);
+    -webkit-text-fill-color: var(--restaurant-primary);
+    font-size: 1.6rem;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(100%);
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 20px 16px;
+    }
+    
+    .top-bar {
+        padding: 16px 20px;
+    }
+    
+    .statsRow {
+        grid-template-columns: 1fr;
+    }
+    
+    .kpiGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ============================================
+   Client Pages Styles (توحيد تصميم صفحات العميل)
+   ============================================ */
+.client-page {
+    background: var(--admin-bg);
+}
+
+.client-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-lg);
+    box-shadow: var(--admin-shadow-sm);
+    padding: var(--admin-spacing-lg);
+    margin-bottom: var(--admin-spacing-md);
+}
+
+.client-btn {
+    background: var(--restaurant-gradient);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--admin-radius-sm);
+    padding: 12px 20px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.client-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(217, 119, 6, 0.25);
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+.muted {
+    color: var(--admin-text-muted);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+

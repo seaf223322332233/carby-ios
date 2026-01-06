@@ -1,74 +1,53 @@
-# 📱 ملفات iOS للرفع على App Store
+# 📱 تطبيق وجباتي - كاربي (Flutter)
 
-## ✅ هذا المجلد يحتوي على:
+هذا التطبيق مبني باستخدام Flutter ويستخدم WebView لعرض الموقع.
 
-**ملفات iOS فقط** المطلوبة لرفع التطبيق على App Store.
+## 🚀 معلومات التطبيق
 
----
+- **اسم التطبيق:** تطبيق وجباتي - كاربي
+- **Bundle ID:** com.carby.wajabati
+- **الرابط:** https://carby.najd-almotatorh.com
+- **النظام:** Flutter (WebView)
 
-## 📁 محتويات المجلد:
+## 📋 المتطلبات
 
-### ملفات الإعدادات:
-- ✅ `capacitor.config.json` - إعدادات Capacitor
-- ✅ `package.json` - معلومات المشروع
-- ✅ `codemagic.yaml` - إعدادات Codemagic (للرفع التلقائي)
-- ✅ `exportOptions.plist` - إعدادات تصدير iOS
-- ✅ `.gitignore` - ملف استثناءات Git
+- Flutter SDK (3.0.0 أو أحدث)
+- Dart SDK
+- Xcode (لـ iOS)
+- Android Studio (لـ Android)
 
-### مجلدات iOS:
-- ✅ `ios/` - جميع ملفات iOS (مستثنى Pods و build)
-- ✅ `dist/` - ملفات التوزيع (الموقع)
+## 🔧 التثبيت
 
----
+```bash
+# تثبيت التبعيات
+flutter pub get
 
-## 🚀 كيفية الرفع على App Store:
+# تشغيل التطبيق
+flutter run
 
-### الطريقة 1: استخدام Codemagic (موصى به) ⭐
+# بناء iOS
+flutter build ios
 
-1. **ارفع محتويات هذا المجلد على GitHub**
-2. في Codemagic:
-   - أضف المشروع
-   - أعد App Store Connect API Key
-   - شغّل البناء
-3. Codemagic سيرفع التطبيق تلقائياً على App Store Connect
+# بناء Android
+flutter build apk
+```
 
-### الطريقة 2: استخدام Xcode (يدوياً)
+## 📦 البناء للـ App Store
 
-1. على Mac:
-   - افتح `ios/App/App.xcworkspace` في Xcode
-   - Product > Archive
-   - Distribute App > App Store Connect
-   - Upload
+### iOS:
+```bash
+flutter build ipa --release
+```
 
----
+### Android:
+```bash
+flutter build appbundle --release
+```
 
-## 📋 معلومات التطبيق:
+## 🔗 Codemagic
 
-| المعلومة | القيمة |
-|---------|--------|
-| **Bundle ID** | `com.carby.wajabati` |
-| **App Name** | تطبيق وجباتي - كاربي |
-| **Server URL** | `https://carby.najd-almotatorh.com` |
+التطبيق جاهز للرفع على Codemagic. استخدم workflow الموجود في `codemagic.yaml`.
 
 ---
 
-## ⚠️ ملاحظات:
-
-- هذا المجلد يحتوي على **ملفات iOS فقط**
-- ملفات PHP موجودة في `dist/` (سيتم تحميلها من الخادم)
-- Pods سيتم تثبيته تلقائياً عند البناء
-- Build سيتم إنشاؤه تلقائياً
-
----
-
-## 🔗 بعد الرفع:
-
-1. ✅ التطبيق على App Store Connect
-2. ✅ أكمل المعلومات في App Store Connect
-3. ✅ Submit for Review
-4. ✅ انتظر المراجعة (1-3 أيام)
-
----
-
-**جاهز للرفع على App Store!** 🚀
-
+**تم تحويل المشروع من Capacitor إلى Flutter!** ✅

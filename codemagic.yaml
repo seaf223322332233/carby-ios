@@ -1,8 +1,7 @@
 # ============================================
-# Codemagic configuration for Capacitor iOS project
+# Codemagic configuration for Flutter iOS project
 # ============================================
-# ⚠️ IMPORTANT: This is NOT a Flutter project - it's a Capacitor project
-# ⚠️ You MUST change Build configuration in Codemagic Settings from "Flutter" to "Advanced"
+# ✅ This is now a Flutter project
 # ============================================
 
 workflows:
@@ -15,46 +14,16 @@ workflows:
     environment:
       groups:
         - app_store_credentials
-      vars:
-        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
-        XCODE_SCHEME: "App"
-        BUNDLE_ID: "com.carby.wajabati"
-        APP_ID: "com.carby.wajabati"
-      node: 20.19.0
+      flutter: stable
       xcode: latest
       cocoapods: default
     scripts:
-      - name: Install npm dependencies
+      - name: Get Flutter dependencies
         script: |
           echo "============================================"
-          echo "Installing npm dependencies..."
+          echo "Getting Flutter dependencies..."
           echo "============================================"
-          npm install
-      - name: Sync Capacitor
-        script: |
-          echo "============================================"
-          echo "Syncing Capacitor..."
-          echo "============================================"
-          npx cap sync ios
-      - name: Install CocoaPods dependencies
-        script: |
-          echo "============================================"
-          echo "Installing CocoaPods dependencies..."
-          echo "============================================"
-          cd ios/App
-          pod install
-          cd ../..
-      - name: Verify Xcode workspace and scheme
-        script: |
-          echo "============================================"
-          echo "Verifying Xcode workspace and scheme..."
-          echo "============================================"
-          if [ ! -f "$XCODE_WORKSPACE" ]; then
-            echo "ERROR: Workspace not found at $XCODE_WORKSPACE"
-            exit 1
-          fi
-          echo "Workspace found: $XCODE_WORKSPACE"
-          xcodebuild -list -workspace "$XCODE_WORKSPACE" || xcodebuild -list -project "ios/App/App.xcodeproj"
+          flutter pub get
       - name: Set up code signing settings on Xcode project
         script: |
           echo "============================================"
@@ -66,18 +35,9 @@ workflows:
           echo "============================================"
           echo "Building IPA..."
           echo "============================================"
-          cd ios/App
-          xcodebuild clean -workspace App.xcworkspace -scheme App
-          xcodebuild archive \
-            -workspace App.xcworkspace \
-            -scheme App \
-            -configuration Release \
-            -archivePath ../../build/App.xcarchive \
-            -destination generic/platform=iOS
-          xcodebuild -exportArchive \
-            -archivePath ../../build/App.xcarchive \
-            -exportOptionsPlist ../../exportOptions.plist \
-            -exportPath ../../build/ios/ipa
+          flutter build ipa \
+            --release \
+            --export-options-plist=exportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:

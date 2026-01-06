@@ -1,0 +1,18 @@
+{
+  "appId": "com.carby.wajabati",
+  "appName": "تطبيق وجباتي - كاربي",
+  "webDir": "public_html",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true,
+    "url": "http://localhost",
+    "allowNavigation": ["*"]
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#6c5ce7"
+    }
+  }
+}
+
