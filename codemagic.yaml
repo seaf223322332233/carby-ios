@@ -43,6 +43,18 @@ workflows:
           echo "============================================"
           cd ios/App
           pod install
+          cd ../..
+      - name: Verify Xcode workspace and scheme
+        script: |
+          echo "============================================"
+          echo "Verifying Xcode workspace and scheme..."
+          echo "============================================"
+          if [ ! -f "$XCODE_WORKSPACE" ]; then
+            echo "ERROR: Workspace not found at $XCODE_WORKSPACE"
+            exit 1
+          fi
+          echo "Workspace found: $XCODE_WORKSPACE"
+          xcodebuild -list -workspace "$XCODE_WORKSPACE" || xcodebuild -list -project "ios/App/App.xcodeproj"
       - name: Set up code signing settings on Xcode project
         script: |
           echo "============================================"
@@ -54,17 +66,18 @@ workflows:
           echo "============================================"
           echo "Building IPA..."
           echo "============================================"
-          xcodebuild clean -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME"
+          cd ios/App
+          xcodebuild clean -workspace App.xcworkspace -scheme App
           xcodebuild archive \
-            -workspace "$XCODE_WORKSPACE" \
-            -scheme "$XCODE_SCHEME" \
+            -workspace App.xcworkspace \
+            -scheme App \
             -configuration Release \
-            -archivePath build/App.xcarchive \
+            -archivePath ../../build/App.xcarchive \
             -destination generic/platform=iOS
           xcodebuild -exportArchive \
-            -archivePath build/App.xcarchive \
-            -exportOptionsPlist exportOptions.plist \
-            -exportPath build/ios/ipa
+            -archivePath ../../build/App.xcarchive \
+            -exportOptionsPlist ../../exportOptions.plist \
+            -exportPath ../../build/ios/ipa
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
