@@ -24,6 +24,14 @@ workflows:
           echo "Getting Flutter dependencies..."
           echo "============================================"
           flutter pub get
+      - name: Install CocoaPods dependencies
+        script: |
+          echo "============================================"
+          echo "Installing CocoaPods dependencies..."
+          echo "============================================"
+          cd ios
+          pod install
+          cd ..
       - name: Set up code signing settings on Xcode project
         script: |
           echo "============================================"
