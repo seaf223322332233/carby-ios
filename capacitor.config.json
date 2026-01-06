@@ -1,0 +1,18 @@
+{
+  "appId": "com.carby.wajabati",
+  "appName": "تطبيق وجباتي - كاربي",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https",
+    "url": "https://carby.najd-almotatorh.com",
+    "cleartext": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#6c5ce7"
+    }
+  }
+}
+

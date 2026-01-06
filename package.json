@@ -1,0 +1,34 @@
+{
+  "name": "wajabati-app",
+  "version": "1.0.0",
+  "description": "تطبيق وجباتي - كاربي (PWA)",
+  "main": "client_dashboard.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pwa",
+    "progressive-web-app",
+    "meal-app",
+    "carby"
+  ],
+  "author": "Carby Team",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
+    "@capacitor/ios": "^6.2.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0"
+  },
+  "pwa": {
+    "name": "تطبيق وجباتي",
+    "short_name": "وجباتي",
+    "start_url": "/client_dashboard.php",
+    "display": "standalone",
+    "theme_color": "#6c5ce7",
+    "background_color": "#6c5ce7",
+    "orientation": "portrait"
+  }
+}
