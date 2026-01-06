@@ -1,0 +1,46 @@
+══════════════════════════════════════════════════════════
+🔑 Codemagic API Key
+══════════════════════════════════════════════════════════
+
+API Key:
+WeH1IbZq9br2NyVZwb59Eq_6wHETFV2IVPLjLboigqs
+
+══════════════════════════════════════════════════════════
+📝 خطوات الإعداد:
+══════════════════════════════════════════════════════════
+
+1️⃣ إضافة API Key
+─────────────────
+Settings > API tokens > Add new token
+Name: carby-ios-api
+Token: WeH1IbZq9br2NyVZwb59Eq_6wHETFV2IVPLjLboigqs
+
+2️⃣ تغيير Build Configuration (مهم جداً!)
+─────────────────────────────────────────
+Settings > Build configuration
+غيّر من "Flutter" إلى "Advanced"
+Configuration file: codemagic.yaml
+Branch: main
+Save
+
+3️⃣ إعداد App Store Connect
+───────────────────────────
+Settings > Integrations > App Store Connect
+Integration name: codemagic
+أدخل Key ID, Issuer ID, Private key
+Save
+
+4️⃣ إعادة تشغيل البناء
+──────────────────────
+Start new build > main > ios-workflow > Start
+
+══════════════════════════════════════════════════════════
+⚠️ مهم:
+══════════════════════════════════════════════════════════
+
+- API Key وحده لا يكفي!
+- يجب تغيير Build configuration إلى Advanced
+- بدون هذا التغيير، لن يعمل البناء!
+
+══════════════════════════════════════════════════════════
+
