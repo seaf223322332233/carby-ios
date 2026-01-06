@@ -1,6 +1,9 @@
+# ============================================
 # Codemagic configuration for Capacitor iOS project
-# This is NOT a Flutter project - it's a Capacitor project
-# Make sure to select "Advanced" configuration in Codemagic Settings
+# ============================================
+# ⚠️ IMPORTANT: This is NOT a Flutter project - it's a Capacitor project
+# ⚠️ You MUST change Build configuration in Codemagic Settings from "Flutter" to "Advanced"
+# ============================================
 
 workflows:
   ios-workflow:
@@ -23,24 +26,34 @@ workflows:
     scripts:
       - name: Install npm dependencies
         script: |
+          echo "============================================"
           echo "Installing npm dependencies..."
+          echo "============================================"
           npm install
       - name: Sync Capacitor
         script: |
+          echo "============================================"
           echo "Syncing Capacitor..."
+          echo "============================================"
           npx cap sync ios
       - name: Install CocoaPods dependencies
         script: |
+          echo "============================================"
           echo "Installing CocoaPods dependencies..."
+          echo "============================================"
           cd ios/App
           pod install
       - name: Set up code signing settings on Xcode project
         script: |
+          echo "============================================"
           echo "Setting up code signing..."
+          echo "============================================"
           xcode-project use-profiles
       - name: Build ipa for distribution
         script: |
+          echo "============================================"
           echo "Building IPA..."
+          echo "============================================"
           xcodebuild clean -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME"
           xcodebuild archive \
             -workspace "$XCODE_WORKSPACE" \

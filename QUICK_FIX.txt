@@ -1,0 +1,45 @@
+══════════════════════════════════════════════════════════
+🔧 حل سريع: مشكلة Codemagic
+══════════════════════════════════════════════════════════
+
+❌ المشكلة:
+   Failed to install dependencies for pubspec file
+   Workflow: Default Workflow (Flutter)
+
+══════════════════════════════════════════════════════════
+✅ الحل (3 خطوات فقط):
+══════════════════════════════════════════════════════════
+
+1️⃣ في Codemagic Settings
+─────────────────────────
+1. Settings > Build configuration
+2. غيّر من "Flutter" إلى "Advanced"
+3. Configuration file: codemagic.yaml
+4. Branch: main
+5. Save
+
+2️⃣ إعداد App Store Connect
+───────────────────────────
+1. Settings > Integrations
+2. App Store Connect > Add integration
+3. Integration name: codemagic
+4. أدخل Key ID, Issuer ID, Private key
+5. Save
+
+3️⃣ إعادة تشغيل البناء
+──────────────────────
+1. Start new build
+2. Branch: main
+3. Workflow: ios-workflow
+4. Start build
+
+══════════════════════════════════════════════════════════
+⚠️ مهم جداً:
+══════════════════════════════════════════════════════════
+
+- يجب تغيير Build configuration من Flutter إلى Advanced
+- بدون هذا التغيير، لن يعمل البناء أبداً!
+- Integration name يجب أن يكون: codemagic
+
+══════════════════════════════════════════════════════════
+
