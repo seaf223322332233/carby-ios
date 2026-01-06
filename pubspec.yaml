@@ -1,0 +1,29 @@
+# ⚠️ تحذير: هذا الملف لن يحول المشروع إلى Flutter!
+# ⚠️ المشروع الحالي هو Capacitor وليس Flutter
+# ⚠️ هذا الملف موجود فقط لتجنب خطأ Codemagic
+# ⚠️ الحل الصحيح: تغيير Build configuration في Codemagic من Flutter إلى Advanced
+
+name: wajabati_app
+description: تطبيق وجباتي - كاربي (Capacitor Project - NOT Flutter)
+version: 1.0.0
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+# ⚠️ هذا المشروع Capacitor - لا يستخدم Dart/Flutter
+# ⚠️ الملفات الحقيقية موجودة في package.json و capacitor.config.json
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  # ⚠️ هذا مجرد ملف وهمي - المشروع الحقيقي في package.json
+  uses-material-design: true
+
